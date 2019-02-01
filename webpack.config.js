@@ -8,6 +8,7 @@ module.exports = {
     },
     resolve: {
         modules: ['node_modules', 'src'],
+        extensions: ['.tsx', '.ts', '.jsx', '.js' ]
     },
     module: {
         rules: [

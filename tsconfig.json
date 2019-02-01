@@ -1,6 +1,8 @@
 {
     "compilerOptions": {
         "sourceMap": true,
-        "jsx": "React"
+        "jsx": "React",
+        "experimentalDecorators": true,
+        "target":"es5"
     }
 }
