@@ -9,7 +9,7 @@ export default class TodoList extends React.Component<ITodoList, {}> {
     render() {
         const { todolist } = this.props;
         return <div>
-            <input type="text" onChange={todolist.changeInput} />
+            <input type="text" value={todolist._value} onChange={todolist.changeInput} />
             <button onClick={todolist.commit}>确定</button>
             <div>
                 {

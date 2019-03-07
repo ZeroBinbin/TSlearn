@@ -16,6 +16,7 @@ class TodoListStore {
     }
     @action commit = () => {
         this._list.push({ text: this._value, id: Math.random() });
+        this._value= "";
     }
 
     @action delete = (id: number) => {
