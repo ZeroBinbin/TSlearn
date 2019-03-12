@@ -1,4 +1,5 @@
 import { IResponseJSON, IResponseData } from '../interface'
+
 export class ResponseData implements IResponseData {
     constructor(resonseData) {
         this.success = resonseData.success;

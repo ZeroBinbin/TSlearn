@@ -3,7 +3,7 @@ import * as reactDom from 'react-dom';
 import { Router, Route, Switch } from 'react-router';
 import createBrowserHistroy from 'history/createBrowserHistory';
 import { configure } from 'mobx';
-import { Provider } from 'mobx-react';
+import { Provider, onError } from 'mobx-react';
 import { RouterStore, syncHistoryWithStore } from 'mobx-react-router';
 import { ComputeStore, TodoListStore, RemoteDataStore } from './stores';
 import Compute from './components/Compute';
@@ -26,6 +26,10 @@ const rootStore = {
     todolist: new TodoListStore(),
     remoteData: new RemoteDataStore(),
 }
+
+onError(error => {
+    console.log(error);
+})
 
 
 

@@ -1,5 +1,5 @@
-import { observable, action, computed, flow } from "mobx";
-import { ResponseJSON, ResponseData } from "../classes/common";
+import { observable, flow } from "mobx";
+import { ResponseJSON } from "../classes/common";
 import axios from 'axios';
 
 class ComputeStore {
@@ -13,7 +13,7 @@ class ComputeStore {
         try {
             const res = yield axios.get('/api/test');
             const responseJSON = new ResponseJSON(res);
-            const data = this.getData();
+            const data = responseJSON.getData();
             this.name = data.name;
             this.value = data.value;
             this.hasData = true;
