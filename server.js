@@ -19,6 +19,18 @@ app.use(require("webpack-hot-middleware")(compiler, {
 app.use(express.static(path.resolve(__dirname, './publish')));
 app.use(express.static(path.resolve(__dirname, './chunk')));
 
+app.use('/api/*', function (req, res) {
+    const jsonFile = `${req.params[0].replace(/\//g, '-')}.json`;
+    if (fs.existsSync(path.resolve(__dirname, `./json/${jsonFile}`))) {
+        fs.createReadStream(path.resolve(__dirname, `./json/${jsonFile}`)).pipe(res);
+    } else {
+        res.writeHead(404, {
+            'Content-Type': 'text/html'
+        });
+        fs.createReadStream(path.resolve(__dirname, './404.html')).pipe(res);
+    }
+});
+
 app.get('*', function (req, res) {
     fs.createReadStream(path.resolve(__dirname, './index.html')).pipe(res);
 });

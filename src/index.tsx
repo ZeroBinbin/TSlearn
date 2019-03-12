@@ -5,12 +5,12 @@ import createBrowserHistroy from 'history/createBrowserHistory';
 import { configure } from 'mobx';
 import { Provider } from 'mobx-react';
 import { RouterStore, syncHistoryWithStore } from 'mobx-react-router';
-import { ComputeStore } from './stores';
+import { ComputeStore, TodoListStore, RemoteDataStore } from './stores';
 import Compute from './components/Compute';
 import TodoList from './components/TodoList';
+import RemoteData from './components/RemoteData';
 import Home from './components/Home';
 import Root from './Root';
-import TodoListStore from './stores/TodoListStore';
 // for hmr
 if ((module as any).hot) {
     (module as any).hot.accept();
@@ -23,7 +23,8 @@ const history = syncHistoryWithStore(browserHistory, routerStore);
 const rootStore = {
     router: routerStore,
     compute: new ComputeStore(),
-    todolist: new TodoListStore()
+    todolist: new TodoListStore(),
+    remoteData: new RemoteDataStore(),
 }
 
 
@@ -37,6 +38,7 @@ class App extends React.Component {
                         <Switch>
                             <Route path="/compute" component={Compute} />
                             <Route path="/todolist" component={TodoList} />
+                            <Route path="/remote-data" component={RemoteData} />
                             <Route path="/" component={Home} />
                         </Switch>
                     </Router>

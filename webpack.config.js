@@ -22,6 +22,7 @@ module.exports = {
                         "@babel/plugin-proposal-export-namespace-from",
                         "@babel/plugin-proposal-numeric-separator",
                         "@babel/plugin-proposal-throw-expressions",
+                        "@babel/plugin-syntax-async-generators",
                         ["@babel/plugin-transform-react-jsx", {
                             "pragma": "dom", // default pragma is React.createElement
                             "pragmaFrag": "DomFrag", // default is React.Fragment
