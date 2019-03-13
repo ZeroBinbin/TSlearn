@@ -8,11 +8,14 @@ module.exports = {
     },
     resolve: {
         modules: ['node_modules', 'src'],
-        extensions: ['.tsx', '.ts', '.jsx', '.js' ]
+        extensions: ['.tsx', '.ts', '.jsx', '.js']
     },
     module: {
         rules: [
             {
+                test: /\.css$/,
+                loader: 'css-loader'
+            },{
                 test: /\.jsx?$/,
                 loader: 'babel-loader',
                 options: {
@@ -32,7 +35,13 @@ module.exports = {
                 }
             }, {
                 test: /\.tsx?$/,
-                loader: 'ts-loader'
+                use: [
+                    {
+                        loader: "style-loader"
+                    }, {
+                        loader: "css-loader"
+                    }
+                ]
             }
         ]
     },
